@@ -13,13 +13,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function Navbar() {
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const router = useRouter();
 
-  const handleLogout = async () => {
-    await logout();
-    router.push('/');
-  };
 
   return (
     <AppBar
@@ -81,7 +77,7 @@ export default function Navbar() {
                 sx={{ mx: 1 }}
               />
 
-              <Tooltip title="Logout">
+              {/* <Tooltip title="Logout">
                 <IconButton
                   onClick={handleLogout}
                   size="small"
@@ -89,7 +85,7 @@ export default function Navbar() {
                 >
                   <LogoutIcon fontSize="small" />
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
             </>
           ) : (
             <Button
