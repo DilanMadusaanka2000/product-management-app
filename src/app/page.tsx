@@ -11,6 +11,7 @@ import SearchBar from '@/components/products/SearchBar';
 import FilterPanel from '@/components/products/FilterPanel';
 import Pagination from '@/components/products/Pagination';
 
+
 export default function HomePage() {
   const { paginatedProducts, fetchProducts, fetchCategories, isLoading, error, totalCount } = useProducts();
 
@@ -37,12 +38,10 @@ export default function HomePage() {
       </Box>
 
       <Grid container spacing={4}>
-        {/* Sidebar */ }
         <Grid item xs={12} md={3} lg={2.5}>
           <FilterPanel />
         </Grid>
 
-        {/* Product Grid */}
         <Grid item xs={12} md={9} lg={9.5}>
           {error && <Alert severity="error" sx={{ mb: 3 }}>{error}</Alert>}
 
