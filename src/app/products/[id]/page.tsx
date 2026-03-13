@@ -44,7 +44,6 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
 
   return (
     <Container maxWidth="lg" sx={{ py: 5 }}>
-      {/* Back */}
       <Button
         component={Link}
         href="/"
@@ -57,7 +56,6 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
 
       <Paper variant="outlined" sx={{ p: { xs: 3, md: 5 } }}>
         <Grid container spacing={6} alignItems="center">
-          {/* Image */}
           <Grid item xs={12} md={5}>
             <Box
               sx={{
@@ -125,15 +123,3 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
     </Container>
   );
 }
-
-export async function generateStaticParams() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/products?limit=10`
-  );
-
-  const products: Product[] = await res.json();
-
-  return products.map((p) => ({
-    id: String(p.id),
-  }));
-} // seo
