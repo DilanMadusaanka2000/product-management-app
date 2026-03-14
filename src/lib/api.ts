@@ -1,3 +1,4 @@
+'use client';                          
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import type { Product, AuthResponse, LoginCredentials, RegisterCredentials } from '@/types';
