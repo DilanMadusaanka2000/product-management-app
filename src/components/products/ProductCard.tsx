@@ -13,15 +13,11 @@ import type { Product } from '@/types';
 
 interface ProductCardProps {
   product: Product;
-  isAdmin?: boolean;
-  onDelete?: (id: number) => void;
-  onEdit?: (product: Product) => void;
 }
 
-export default function ProductCard({ product, isAdmin, onDelete, onEdit }: ProductCardProps) {
+export default function ProductCard({ product}: ProductCardProps) {
   return (
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* Clickable image + title area */}
       <CardActionArea component={Link} href={`/products/${product.id}`} sx={{ flexGrow: 1 }}>
         <Box
           sx={{
@@ -77,37 +73,6 @@ export default function ProductCard({ product, isAdmin, onDelete, onEdit }: Prod
           </Box>
         </CardContent>
       </CardActionArea>
-
-      {/* Admin Actions */}
-      {isAdmin && (
-        <Box
-          sx={{
-            display: 'flex', gap: 1, px: 2, pb: 2,
-            borderTop: '1px solid', borderColor: 'divider', pt: 1.5,
-          }}
-        >
-          <Tooltip title="Edit">
-            <IconButton
-              size="small"
-              color="primary"
-              onClick={() => onEdit?.(product)}
-              sx={{ bgcolor: 'primary.lighter', '&:hover': { bgcolor: 'primary.light' } }}
-            >
-              <EditIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Delete">
-            <IconButton
-              size="small"
-              color="error"
-              onClick={() => onDelete?.(product.id)}
-              sx={{ bgcolor: 'error.lighter', '&:hover': { bgcolor: 'error.light' } }}
-            >
-              <DeleteIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-        </Box>
-      )}
     </Card>
   );
 }
