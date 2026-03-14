@@ -9,7 +9,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import { formatPrice } from '@/lib/utils';
 import type { Product } from '@/types';
-import { publicApi } from '@/lib/api';
+import { publicApi } from '@/lib/publicApi';
 
 
 async function getProduct(id: string): Promise<Product | null> {
