@@ -36,10 +36,15 @@ export const publicApi = {
     const res = await axios.get<Product[]>(`${FAKESTORE}/products`);
     return res.data;
   },
+  
   getProductById: async (id: number): Promise<Product> => {
-    const res = await axios.get<Product>(`${FAKESTORE}/products/${id}`);
-    return res.data;
+    const res = await fetch(`${FAKESTORE}/products/${id}`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) throw new Error('Failed to fetch product');
+    return res.json();
   },
+  
   getCategories: async (): Promise<string[]> => {
     const res = await axios.get<string[]>(`${FAKESTORE}/products/categories`);
     return res.data;
