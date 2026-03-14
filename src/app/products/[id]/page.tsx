@@ -9,19 +9,12 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import { formatPrice } from '@/lib/utils';
 import type { Product } from '@/types';
+import { publicApi } from '@/lib/api';
+
 
 async function getProduct(id: string): Promise<Product | null> {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/${id}`,
-      {
-        next: { revalidate: 3600 },
-      }
-    );
-
-    if (!res.ok) return null;
-
-    return res.json();
+    return await publicApi.getProductById(Number(id));
   } catch {
     return null;
   }

@@ -18,7 +18,7 @@ export default function HomePage() {
   useEffect(() => {
     fetchProducts();
     fetchCategories();
-  }, []);
+  }, [fetchProducts,fetchCategories]);
 
   return (
     <Container maxWidth="xl" sx={{ py: 5 }}>
